@@ -8,16 +8,37 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+/* ---------- MIDDLEWARE ---------- */
+app.use(cors({
+  origin: "*"
+}));
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
+/* ---------- ROUTES ---------- */
 app.use("/api/projects", projectRoutes);
 
-const PORT = process.env.PORT || 5000;
-
-sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
-  });
+/* ---------- HEALTH CHECK ---------- */
+app.get("/", (req, res) => {
+  res.send("✅ Backend is running");
 });
+
+/* ---------- START SERVER ---------- */
+const PORT = process.env.PORT || 8080;
+
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log("✅ Database connected");
+
+    await sequelize.sync();
+    console.log("✅ Models synced");
+
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("❌ Unable to start server:", error);
+    process.exit(1);
+  }
+})();
