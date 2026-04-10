@@ -144,7 +144,7 @@ export default function Projects() {
             >
               {active.demoUrl && (
                 <video
-                  src={`https://your-backend-url${active.demoUrl}`}
+                  src={`https://project-selling-backend.onrender.com${active.demoUrl}`}
                   controls
                   className="w-full aspect-video bg-black"
                 />
