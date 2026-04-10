@@ -144,7 +144,7 @@ export default function Projects() {
             >
               {active.demoUrl && (
                 <video
-                  src={`http://localhost:5000${active.demoUrl}`}
+                  src={`https://your-backend-url${active.demoUrl}`}
                   controls
                   className="w-full aspect-video bg-black"
                 />
