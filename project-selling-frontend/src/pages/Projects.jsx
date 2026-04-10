@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 
-const API = "https://your-backend-url/api/projects";
+const API = "https://project-selling-backend.onrender.com/api/projects";
 const PER_PAGE = 6;
 
 export default function Projects() {
