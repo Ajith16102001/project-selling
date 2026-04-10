@@ -49,14 +49,34 @@ export default function ProjectForm({ onAdd }) {
       <textarea
         className="input"
         placeholder="Description"
+        rows="4"
         value={form.description}
         onChange={(e) => setForm({ ...form, description: e.target.value })}
         required
       />
 
-      <button className="bg-blue-600 px-6 py-2 rounded mt-4">
+      <button className="bg-blue-600 px-6 py-2 rounded mt-4 w-full md:w-auto">
         Add Project
       </button>
+
+      {/* Mobile responsive styles */}
+      <style>{`
+        @media (max-width: 768px) {
+          .input {
+            font-size: 14px;
+            padding: 10px 12px;
+          }
+          
+          form {
+            padding: 16px !important;
+          }
+          
+          h2 {
+            font-size: 18px;
+            margin-bottom: 12px;
+          }
+        }
+      `}</style>
     </form>
   );
 }
