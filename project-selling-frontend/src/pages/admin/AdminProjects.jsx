@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const API = "https://your-backend-url/api/projects";
+const API = "https://project-selling-backend.onrender.com/api/projects";
 
 export default function AdminProjects() {
   const [projects, setProjects] = useState([]);
